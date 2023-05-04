@@ -1,21 +1,29 @@
 # goreleaser.yml
 project_name: super_calculator
-dist: dir
-archive:
-  format: tar.gz
-  name_template: "{{ .Tag }}_{{ .Os }}_{{ .Arch }}"
-  id_templates: "{{ .Tag }}_{{ .Os }}_{{ .Arch }}"
-snapshot:
-  name_template: "snapshot_{{.Env.GIT_SHA}}_{{ .Os }}_{{ .Arch }}"
-  id_template: snapshot
+builds:
+  - binary: super_calculator
+    ldflags: -s -w
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+archives:
+  - replacements:
+      amd64: x86_64
+      darwin: macOS
+      linux: Linux
+      arm64: ARMv8
+    format_overrides:
+      - goos: darwin
+        format: zip
+      - goos: linux
+        format: tar.gz
 checksum:
-  name_template: "{{ .Tag }}_checksums.txt"
-  ids:
-    - sha256
+  name_template: 'checksums.txt'
 release:
   github:
     owner: MikeWiller
     name: super_calculator
-    draft: false
-    prerelease: false
-    token: {{ .Env.GITHUB_TOKEN }}
+    token: ${{ secrets.GITHUB2_TOKEN }}
