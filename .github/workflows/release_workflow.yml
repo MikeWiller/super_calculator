@@ -41,5 +41,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64,linux/386
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/super_calculator:${{ github.ref }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/super_calculator:${GITHUB_REF##*/}
