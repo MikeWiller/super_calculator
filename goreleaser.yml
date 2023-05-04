@@ -1,18 +1,21 @@
-builds:
-- env:
-    - CGO_ENABLED=0
-    - GOOS=linux
-    - GOARCH=amd64
-    - GORACE=
-    - GOROOT=
-    - GOPATH=
-  binary: caculator
-  goos:
-  - linux
-  goarch:
-  - amd64
-  ldflags: -s -w
-  main: ./
-  name_template: '{{ .Name }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
-  folders:
-  - dist
+# goreleaser.yml
+project_name: super_calculator
+dist: dir
+archive:
+  format: tar.gz
+  name_template: "{{ .Tag }}_{{ .Os }}_{{ .Arch }}"
+  id_templates: "{{ .Tag }}_{{ .Os }}_{{ .Arch }}"
+snapshot:
+  name_template: "snapshot_{{.Env.GIT_SHA}}_{{ .Os }}_{{ .Arch }}"
+  id_template: snapshot
+checksum:
+  name_template: "{{ .Tag }}_checksums.txt"
+  ids:
+    - sha256
+release:
+  github:
+    owner: MikeWiller
+    name: super_calculator
+    draft: false
+    prerelease: false
+    token: {{ .Env.GITHUB_TOKEN }}
