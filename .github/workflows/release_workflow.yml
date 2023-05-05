@@ -50,4 +50,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           registry: docker.pkg.github.com
           repository: ${{ secrets.DOCKERHUB_USERNAME }}/super_calculator
-          tags: ${{ github.ref }}
+          tags: newest
