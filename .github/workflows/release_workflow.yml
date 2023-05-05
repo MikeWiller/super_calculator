@@ -44,7 +44,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Publish Image
-        uses: matootie/github-docker@v3.1.0
+        uses: jerray/publish-docker-action@master
         with:
-         accessToken: ${{ secrets.GITHUB_TOKEN  }}
-         tag: ${{ github.ref }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          registry: docker.pkg.github.com
+          repository: ${{ secrets.DOCKERHUB_USERNAME }}/super_calculator
+          tags: ${{ github.ref }}
