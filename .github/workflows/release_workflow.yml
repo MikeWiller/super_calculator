@@ -49,4 +49,4 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: "${{ secrets.DOCKERHUB_USERNAME }}/super_calculator:${{ github.ref }}"
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/super_calculator:latest, ${{ secrets.DOCKERHUB_USERNAME }}/super_calculator:${{ github.ref }}
