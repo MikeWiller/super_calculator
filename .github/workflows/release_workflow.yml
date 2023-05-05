@@ -37,12 +37,10 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Debug
-        run: |
-          echo "github.ref -> {{ github.ref }}"
       - name: Build Docker Image
         uses: docker/build-push-action@v4
         with:
           context: .
+          file: Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/calculator:${{ github.ref }}
+          tags: michael2408/calculator:latest, ${{ secrets.DOCKERHUB_USERNAME }}/super_calculator:${{ github.ref }}
