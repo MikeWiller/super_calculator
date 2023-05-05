@@ -19,9 +19,9 @@ jobs:
        config: "p/default"
 
     - name: Dockerfile Analysis with Hadolint
-      uses: hadolint/hadolint-action@v2.1.0
+      uses: hadolint/hadolint-action@v3.1.0
       with:
-       files: Dockerfile
+       dockerfile: Dockerfile
 
     - name: Super linter on Pull Request
       if: ${{ github.event_name == 'pull_request' }}
