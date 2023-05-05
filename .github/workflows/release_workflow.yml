@@ -43,10 +43,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build Docker Image
-        uses: docker/build-push-action@v4
+      - name: Build & push Docker image
+        uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          context: .
-          file: Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/super_calculator:latest, ${{ secrets.DOCKERHUB_USERNAME }}/super_calculator:${{ github.ref }}
+         image: ${{ secrets.DOCKERHUB_USERNAME }}/super_calculator
+         tags: ${{ github.ref }}
+         registry: hub.docker.com
+         dockerfile: ./Dockerfile
+         username: ${{ secrets.DOCKERHUB_USERNAME }}
+         password: ${{ secrets.DOCKERHUB_TOKEN }}
