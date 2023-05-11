@@ -23,7 +23,7 @@ jobs:
       with:
        dockerfile: Dockerfile
 
-    - name: Super linter on Pull Request
+    - name: Super linter on Pull Request trigger
       if: ${{ github.event_name == 'pull_request' }}
       uses: github/super-linter/slim@v5
       env:
