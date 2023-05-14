@@ -15,10 +15,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Go ${{ matrix.go-version }}
+    - name: Setup de Go avec la version  ${{ matrix.go-version }}
       uses: actions/setup-go@v4
       with:
         go-version: ${{ matrix.go-version }}
 
-    - name: Run tests
+    - name: Execution de tests
       run: go test ./...
