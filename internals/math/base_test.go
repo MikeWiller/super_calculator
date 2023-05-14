@@ -2,7 +2,6 @@ package math
 
 import (
 	"testing"
-	"calculator/internals/math"
 )
 
 func TestAddition(t *testing.T) {
