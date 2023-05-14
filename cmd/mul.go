@@ -10,9 +10,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	x, y float64
-)
 
 // mulCmd represents the mul command
 var mulCmd = &cobra.Command{
