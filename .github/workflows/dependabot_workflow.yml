@@ -2,7 +2,7 @@ name: Dependabot
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "30 13 * * *"
 
 jobs:
   dependabot:
@@ -10,6 +10,11 @@ jobs:
     steps:
       - name: code de checkout
         uses: actions/checkout@v3
+      - name: Mise en cache des dépendances Go
+        uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
