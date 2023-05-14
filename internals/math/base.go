@@ -13,5 +13,8 @@ func Subtraction(x, y float64) float64 {
 }
 
 func Division(x, y float64) float64 {
-	return x / y
+       if y != 0 {
+		return x / y
+	}
+	return 0
 }
