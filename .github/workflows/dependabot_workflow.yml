@@ -1,8 +1,9 @@
 name: Dependabot
 
 on:
-  schedule:
-    - cron: "30 13 * * *"
+  push:
+#  schedule:
+#    - cron: "30 13 * * *"
 
 jobs:
   dependabot:
