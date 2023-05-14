@@ -1,26 +1,25 @@
-name: Dependabot
+name: Dependabot Workflow
 
 on:
-  push:
-#  schedule:
-#    - cron: "30 13 * * *"
+  schedule:
+    - cron: "30 13 * * *"
 
 jobs:
   dependabot:
     runs-on: ubuntu-latest
     steps:
-      - name: code de checkout
+      - name: Les actions Checkout 
         uses: actions/checkout@v3
       - name: Mise en cache des dépendances Go
         uses: actions/cache@v3
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-      - name: Setup Go
+      - name: Setup de Go
         uses: actions/setup-go@v4
         with:
           go-version: '1.16.1'
-      - name: Setup Dependabot
+      - name: Setup de Dependabot
         uses: dependabot/dependabot-action@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
