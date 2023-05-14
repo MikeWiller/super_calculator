@@ -10,6 +10,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	x, y float64
+)
+
 // subCmd represents the sub command
 var subCmd = &cobra.Command{
 	Use:   "sub",
