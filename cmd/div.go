@@ -9,9 +9,7 @@ import (
 
 	"github.com/spf13/cobra"
 )
-var (
-	x, y float64
-)
+
 // divCmd represents the div command
 var divCmd = &cobra.Command{
 	Use:   "div",
