@@ -1,5 +1,3 @@
-# Configuration pour Go
----
 version: 2
 updates:
   - package-ecosystem: "gomod"
@@ -10,10 +8,6 @@ updates:
       - dependency-type: "direct"
         update-type: "semver:minor"
 
-# Configuration pour Docker
----
-version: 2
-updates:
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
